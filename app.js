@@ -153,7 +153,7 @@ class Clock {
     }
   }
   updateClock (hour, id, className, name) {
-    let updateClock = setInterval(() => {
+    setInterval(() => {
       let newHour = hour;
       currentTime.getTime(newHour)
       currentTime.setClock(id, className)
