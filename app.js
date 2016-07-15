@@ -79,7 +79,7 @@
 // }
 //
 // const currentTime = clock(0, 'container2', 'clock', 'clock')
-// let updateClock = setInterval(() => {
+// let updateClock = setInterv al(() => {
 //   currentTime.getTime()
 //   currentTime.setClock()
 //   currentTime.resetTime()
@@ -152,37 +152,18 @@ class Clock {
       div.removeChild(nodes[2])
     }
   }
+  updateClock (hour, id, className, name) {
+    let updateClock = setInterval(() => {
+      let newHour = hour;
+      currentTime.getTime(newHour)
+      currentTime.setClock(id, className)
+      currentTime.resetTime(name)
+    }, 500)
+  }
 }
 const currentTime = new Clock ()
 const centralTime = new Clock ()
 const gmtTime = new Clock ()
-  let updateGmt = setInterval(() => {
-    let hour = 6;
-    gmtTime.getTime(hour)
-    gmtTime.setClock('uk', 'clock3')
-    gmtTime.resetTime('clock3')
-  }, 500)
-  let updateCentral = setInterval(() => {
-    let hour = 1;
-    centralTime.getTime(hour)
-    centralTime.setClock('central', 'clock2')
-    centralTime.resetTime('clock2')
-  }, 500)
-  let updateClock = setInterval(() => {
-    let hour = 0;
-    currentTime.getTime(hour)
-    currentTime.setClock('container2', 'clock')
-    currentTime.resetTime('clock')
-  }, 500)
-
-
-
-// let name = {name: "Will"}
-// let party = {party: "fun"}
-//
-// let notMyObj = Object.assign(party)
-//
-// let myObj = Object.assign(name, party)
-//
-// console.log(myObj)
-// console.log(notMyObj)
+currentTime.updateClock(0, 'container2', 'clock', 'clock')
+centralTime.updateClock(1, 'central', 'clock2', 'clock2')
+gmtTime.updateClock(6, 'uk', 'clock3', 'clock3')
